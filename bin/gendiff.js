@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { program } from 'commander';
+import makeParsingData from "../src/MakeParsingData.js";
 
 program
 	.name('gendiff')
@@ -9,8 +10,7 @@ program
 	.arguments('<filepath1> <filepath2>')
 	.option('-f, --format <type>', 'output format', 'stylish')
 	.usage('Usage: gendiff [options] <filepath1> <filepath2>')
+	.action((filepath1, filepath2) => {
+		console.log(makeParsingData(filepath1, filepath2))
+	})
 	.parse(process.argv);
-
-if (program.help) {
-	program.outputHelp();
-}
