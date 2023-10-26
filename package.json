@@ -4,7 +4,8 @@
   "description": "[![Actions Status](https://github.com/unclebusy/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/unclebusy/frontend-project-46/actions)",
   "main": "bin/gendiff.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "type": "module",
   "bin": {
