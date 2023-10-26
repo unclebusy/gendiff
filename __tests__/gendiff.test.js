@@ -1,16 +1,15 @@
-import path from 'path';
-import makeParsingData from '../src/MakeParsingData.js';
+import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import makeParsingData from '../src/MakeParsingData.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 test('compare flat JSON files', () => {
-    const filepath1 = path.resolve(__dirname, '__fixtures__/file1.json');
-    const filepath2 = path.resolve(__dirname, '__fixtures__/file2.json');
+  const filepath1 = path.resolve(__dirname, '__fixtures__/file1.json');
+  const filepath2 = path.resolve(__dirname, '__fixtures__/file2.json');
 
-    const expected = `{
+  const expected = `{
   - follow: false
     host: hexlet.io
   - proxy: 123.234.53.22
@@ -19,5 +18,5 @@ test('compare flat JSON files', () => {
   + verbose: true
 }`;
 
-    expect(makeParsingData(filepath1, filepath2)).toBe(expected);
+  expect(makeParsingData(filepath1, filepath2)).toBe(expected);
 });
