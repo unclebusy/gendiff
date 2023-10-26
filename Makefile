@@ -5,4 +5,4 @@ lint:
 	npx eslint .
 
 test:
-	npm run test:watch
+	npm test
