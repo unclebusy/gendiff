@@ -6,3 +6,6 @@ lint:
 
 test:
 	npm test
+
+make test-coverage:
+	npm test --coverage
