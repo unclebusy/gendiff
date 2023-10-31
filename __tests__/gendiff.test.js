@@ -1,6 +1,6 @@
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import makeParsingData from '../src/MakeParsingData.js';
+import makeParsingData from '../src/makeParsingData.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

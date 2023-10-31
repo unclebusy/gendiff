@@ -1,4 +1,4 @@
-[![Asciinema](https://asciinema.org/a/G7CSE6RMG80OHRrfpKhVlS40w.svg)](https://asciinema.org/a/G7CSE6RMG80OHRrfpKhVlS40w)
+[![Asciinema](https://asciinema.org/a/YGfDM0G5kW837g9VzKUkYyDsF.svg)](https://asciinema.org/a/YGfDM0G5kW837g9VzKUkYyDsF)
 
 
 ### Hexlet tests and linter status:

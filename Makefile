@@ -9,3 +9,6 @@ test:
 
 make test-coverage:
 	npm test --coverage
+
+rec:
+	asciinema rec
