@@ -20,3 +20,19 @@ test('compare flat JSON files', () => {
 
   expect(makeParsingData(filepath1, filepath2)).toBe(expected);
 });
+
+test('compare flat YAML files', () => {
+  const filepath1 = path.resolve(__dirname, '__fixtures__/file1.yml');
+  const filepath2 = path.resolve(__dirname, '__fixtures__/file2.yml');
+
+  const expected = `{
+  - follow: false
+    host: hexlet.io
+  - proxy: 123.234.53.22
+  - timeout: 50
+  + timeout: 20
+  + verbose: true
+}`;
+
+  expect(makeParsingData(filepath1, filepath2)).toBe(expected);
+});
