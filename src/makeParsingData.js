@@ -44,4 +44,5 @@ const makeParsingData = (filepath1, filepath2) => {
   return compareObjects(data1, data2);
 };
 
+
 export default makeParsingData;
