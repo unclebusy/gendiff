@@ -1,5 +1,6 @@
 import _ from "lodash";
 
+
 const formatNode = (node, indent) => {
     const formatValue = (value) => {
         if (_.isObject(value)) {
@@ -7,10 +8,10 @@ const formatNode = (node, indent) => {
             const result = keys.map((key) => `${indent}    ${key}: ${formatValue(value[key])}`).join('\n');
             return `{\n${result}\n${indent}  }`;
         }
-        return value;
+        return String(value);
     };
 
-    const formatRemovedKey = (key, obj) => `${indent}- ${key}: ${formatValue(obj[key])}`;
+    const formatRemovedKey = (key, value) => `${indent}- ${key}: ${formatValue(value)}`;
     const formatAddedKey = (key, obj) => `${indent}+ ${key}: ${formatValue(obj[key])}`;
     const formatModifiedKey = (key, obj1, obj2) => {
         const oldValue = obj1 && obj1[key] ? formatValue(obj1[key]) : 'null';
@@ -40,4 +41,3 @@ const formatTree = (tree) => {
 };
 
 export default formatTree;
-
