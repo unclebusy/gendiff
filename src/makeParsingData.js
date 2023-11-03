@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import parseData from './parsers.js';
+import compareObjects from "./treeBuilder.js";
 
 const formatValue = (value, indent) => {
   if (_.isObject(value)) {

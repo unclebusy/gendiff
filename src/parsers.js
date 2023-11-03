@@ -4,7 +4,7 @@ import yaml from 'js-yaml';
 
 const parseData = (filepath) => {
   const absolutePath = path.resolve(process.cwd(), filepath);
-  const data = fs.readFileSync(absolutePath, 'utf-8');
+  const data = fs.readFileSync(absolutePath, 'utf8');
 
   if (filepath.endsWith('.json')) {
     return JSON.parse(data);
