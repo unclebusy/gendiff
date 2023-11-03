@@ -18,4 +18,6 @@ const compareObjects = (obj1, obj2) => {
         }
         return { key, type: 'modified', oldValue: obj1[key], newValue: obj2[key] };
     });
-}
+};
+
+export default compareObjects;
