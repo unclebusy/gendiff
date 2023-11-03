@@ -8,7 +8,8 @@ const formatNode = (node, indent) => {
             const result = keys.map((key) => `${indent}    ${key}: ${formatValue(value[key])}`).join('\n');
             return `{\n${result}\n${indent}  }`;
         }
-        return String(value);
+
+        return value !== null ? String(value) : null;
     };
 
     const formatRemovedKey = (key, value) => `${indent}- ${key}: ${formatValue(value)}`;
