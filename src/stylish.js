@@ -1,43 +1,49 @@
-import _ from "lodash";
+import _ from 'lodash';
 
+const calculateIndent = (depth, spacesCount = 4) => {
+    const count = spacesCount * depth - 2;
+    return count >= 0 ? ' '.repeat(count) : '';
+};
 
-const formatNode = (node, indent) => {
-    const formatValue = (value) => {
-        if (_.isObject(value)) {
-            const keys = Object.keys(value);
-            const result = keys.map((key) => `${indent}    ${key}: ${formatValue(value[key])}`).join('\n');
-            return `{\n${result}\n${indent}  }`;
-        }
+const stringify = (value, replacer = ' ', spacesCount = 4, depth = 1) => {
+    const currentIndent = calculateIndent(depth, spacesCount);
 
-        return value !== null ? String(value) : null;
+    if (_.isObject(value)) {
+        const bracketIndent = calculateIndent(depth - 1, spacesCount);
+        const lines = Object.entries(value).map(([key, val]) => `${currentIndent}${key}: ${stringify(val, replacer, spacesCount, depth + 1)}`);
+        return `{\n${lines.join('\n')}\n${bracketIndent}}`;
+    }
+
+    return String(value);
+};
+
+const formatNode = (node, indent, spacesCount) => {
+    const formatValue = (value, depth) => {
+        return _.isObject(value) ? stringify(value, ' ', spacesCount, depth) : String(value);
     };
 
-    const formatRemovedKey = (key, value) => `${indent}- ${key}: ${formatValue(value)}`;
-    const formatAddedKey = (key, obj) => `${indent}+ ${key}: ${formatValue(obj[key])}`;
-    const formatModifiedKey = (key, obj1, obj2) => {
-        const oldValue = obj1 && obj1[key] ? formatValue(obj1[key]) : 'null';
-        const newValue = obj2 && obj2[key] ? formatValue(obj2[key]) : 'null';
-        return `${indent}- ${key}: ${oldValue}\n${indent}+ ${key}: ${newValue}`;
-    };
-    const formatUnchangedKey = (key, obj) => `${indent}  ${key}: ${formatValue(obj[key])}`;
+    const currentIndent = calculateIndent(node.depth, spacesCount);
+    const bracketIndent = calculateIndent(node.depth - 1, spacesCount);
 
     switch (node.type) {
         case 'deleted':
-            return formatRemovedKey(node.key, node.value);
+            return `${indent}- ${node.key}: ${formatValue(node.value, node.depth)}`;
         case 'added':
-            return formatAddedKey(node.key, node.value);
+            return `${indent}+ ${node.key}: ${formatValue(node.value, node.depth)}`;
         case 'modified':
-            return formatModifiedKey(node.key, node.oldValue, node.newValue);
+            const oldValue = formatValue(node.oldValue, node.depth);
+            const newValue = formatValue(node.newValue, node.depth);
+            return `${indent}- ${node.key}: ${oldValue}\n${indent}+ ${node.key}: ${newValue}`;
         case 'unchanged':
-            return formatUnchangedKey(node.key, node.value);
+            return `${indent}  ${node.key}: ${formatValue(node.value, node.depth)}`;
         case 'nested':
-            const children = node.children.map((child) => formatNode(child, `${indent}    `)).join('\n');
+            const children = node.children.map((child) => formatNode(child, `${indent}    `, spacesCount)).join('\n');
             return `${indent}  ${node.key}: {\n${children}\n${indent}  }`;
     }
 };
 
-const formatTree = (tree) => {
-    const result = tree.map((node) => formatNode(node, '')).join('\n');
+const formatTree = (tree, spacesCount = 4) => {
+    const result = tree.map((node) => formatNode(node, '', spacesCount)).join('\n');
     return `{\n${result}\n}`;
 };
 
