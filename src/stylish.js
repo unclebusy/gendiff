@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 const calculateIndent = (depth, spacesCount = 4) => {
     const count = spacesCount * depth - 2;
-    return count >= 0 ? ' '.repeat(count) : ' ';
+    return count >= 0 ? ' '.repeat(count) : '  ';
 };
 
 const stringify = (value, depth = 1) => {
