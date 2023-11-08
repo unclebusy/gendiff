@@ -7,8 +7,8 @@ lint:
 test:
 	npm test
 
-make test-coverage:
-	npm run coverage
+test-coverage:
+	npm test --coverage
 
 
 rec:
