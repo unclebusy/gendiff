@@ -8,7 +8,8 @@ test:
 	npm test
 
 make test-coverage:
-	npm test --coverage
+	npm run coverage
+
 
 rec:
 	asciinema rec
