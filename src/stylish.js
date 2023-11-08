@@ -6,12 +6,12 @@ const calculateIndent = (depth, spacesCount = 4) => {
 };
 
 const stringify = (value, depth = 1) => {
-    const currentIndent = calculateIndent(depth);
+    const currentIndent = calculateIndent(depth + 1);
+    const bracketIndent = calculateIndent(depth);
 
     if (_.isObject(value)) {
-        const bracketIndent = calculateIndent(depth - 1);
-        const lines = Object.entries(value).map(([key, val]) => `${currentIndent}${key}: ${stringify(val, depth + 1)}`);
-        return `{\n${lines.join('\n')}\n${bracketIndent}}`;
+        const lines = Object.entries(value).map(([key, val]) => `${currentIndent}  ${key}: ${stringify(val, depth + 1)}`);
+        return `{\n${lines.join('\n')}\n${bracketIndent}  }`;
     }
 
     return String(value);
@@ -43,4 +43,3 @@ const formatTree = (tree) => {
 };
 
 export default formatTree;
-
