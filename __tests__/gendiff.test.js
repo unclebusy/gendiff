@@ -1,11 +1,12 @@
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import makeParsingData from '../src/makeParsingData.js';
+import makeDiffPlain from "../src/formatters/plain.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-test('compare flat JSON files', () => {
+test('compare JSON files', () => {
   const filepath1 = path.resolve(__dirname, '__fixtures__/file1.json');
   const filepath2 = path.resolve(__dirname, '__fixtures__/file2.json');
 
@@ -57,7 +58,7 @@ test('compare flat JSON files', () => {
   expect(makeParsingData(filepath1, filepath2)).toBe(expected);
 });
 
-test('compare flat YAML files', () => {
+test('compare YAML files', () => {
   const filepath1 = path.resolve(__dirname, '__fixtures__/file1.yml');
   const filepath2 = path.resolve(__dirname, '__fixtures__/file2.yml');
 
