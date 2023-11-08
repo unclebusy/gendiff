@@ -1,7 +1,6 @@
 import buildTree from './treeBuilder.js';
 import formatTree from './stylish.js';
-import parseData from "./parsers.js";
-
+import parseData from './parsers.js';
 
 const makeParsingData = (filepath1, filepath2) => {
   const data1 = parseData(filepath1);
