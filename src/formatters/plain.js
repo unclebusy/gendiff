@@ -1,6 +1,16 @@
 import _ from 'lodash';
 
 const formatPlain = (tree, parentKey = '') => {
+  const stringifyValue = (value) => {
+    if (_.isObject(value)) {
+      return '[complex value]';
+    }
+    if (_.isString(value)) {
+      return `'${value}'`;
+    }
+    return value;
+  };
+
   const renderNode = (node) => {
     const key = parentKey ? `${parentKey}.${node.key}` : node.key;
 
@@ -18,16 +28,6 @@ const formatPlain = (tree, parentKey = '') => {
       default:
         throw new Error(`Unknown node type: ${node.type}`);
     }
-  };
-
-  const stringifyValue = (value) => {
-    if (_.isObject(value)) {
-      return '[complex value]';
-    }
-    if (_.isString(value)) {
-      return `'${value}'`;
-    }
-    return value;
   };
 
   return tree.map((node) => renderNode(node)).join('');

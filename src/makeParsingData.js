@@ -1,7 +1,7 @@
 import buildTree from './treeBuilder.js';
 import parseData from './parsers.js';
 import formatTree from './formatters/stylish.js';
-import formatPlain from './formatters/plain.js'
+import formatPlain from './formatters/plain.js';
 
 const makeParsingData = (filepath1, filepath2, format) => {
   const data1 = parseData(filepath1);
@@ -11,9 +11,8 @@ const makeParsingData = (filepath1, filepath2, format) => {
 
   if (format === 'plain') {
     return formatPlain(diffTree);
-  } else {
-    return formatTree(diffTree);
   }
+  return formatTree(diffTree);
 };
 
 export default makeParsingData;

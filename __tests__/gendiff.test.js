@@ -1,7 +1,7 @@
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import makeParsingData from '../src/makeParsingData.js';
-import makeDiffPlain from "../src/formatters/plain.js";
+import makeDiffPlain from '../src/formatters/plain.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
