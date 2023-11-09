@@ -6,13 +6,13 @@ const formatPlain = (tree, parentKey = '') => {
 
     switch (node.type) {
       case 'added':
-        return `Property '${key}' was added with value: ${stringifyValue(node.value)}`;
+        return `Property '${key}' was added with value: ${stringifyValue(node.value)}\n`;
       case 'deleted':
-        return `Property '${key}' was removed`;
+        return `Property '${key}' was removed\n`;
       case 'modified':
-        return `Property '${key}' was updated. From ${stringifyValue(node.oldValue)} to ${stringifyValue(node.newValue)}`;
+        return `Property '${key}' was updated. From ${stringifyValue(node.oldValue)} to ${stringifyValue(node.newValue)}\n`;
       case 'nested':
-        return node.children.map((child) => renderNode(child)).join('\n');
+        return node.children.map((child) => renderNode(child)).join('');
       case 'unchanged':
         return '';
       default:
@@ -30,7 +30,7 @@ const formatPlain = (tree, parentKey = '') => {
     return value;
   };
 
-  return tree.map((node) => renderNode(node)).filter((line) => line !== '').join('\n');
+  return tree.map((node) => renderNode(node)).join('');
 };
 
 export default formatPlain;
