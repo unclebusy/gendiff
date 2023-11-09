@@ -109,3 +109,43 @@ test('compare YAML files', () => {
 
   expect(makeParsingData(filepath1, filepath2)).toBe(expected);
 });
+
+test('compare JSON files in plain format', () => {
+  const filepath1 = path.resolve(__dirname, '__fixtures__/file1.json');
+  const filepath2 = path.resolve(__dirname, '__fixtures__/file2.json');
+
+  const expected = `Property 'common.follow' was added with value: false
+Property 'common.setting1' was unchanged. Value: Value 1
+Property 'common.setting2' was removed
+Property 'common.setting3' was updated. From true to null
+Property 'common.setting4' was added with value: blah blah
+Property 'common.setting5' was added with value: [complex value]
+Property 'common.setting6.doge.wow' was updated. From '' to 'so much'
+Property 'common.setting6.ops' was added with value: vops
+Property 'group1.baz' was updated. From 'bas' to 'bars'
+Property 'group1.nest' was updated. From [complex value] to 'str'
+Property 'group2' was removed
+Property 'group3' was added with value: [complex value]`;
+
+  expect(makeDiffPlain(filepath1, filepath2)).toBe(expected);
+});
+
+test('compare YAML files in plain format', () => {
+  const filepath1 = path.resolve(__dirname, '__fixtures__/file1.yml');
+  const filepath2 = path.resolve(__dirname, '__fixtures__/file2.yml');
+
+  const expected = `Property 'common.follow' was added with value: false
+Property 'common.setting1' was unchanged. Value: Value 1
+Property 'common.setting2' was removed
+Property 'common.setting3' was updated. From true to null
+Property 'common.setting4' was added with value: blah blah
+Property 'common.setting5' was added with value: [complex value]
+Property 'common.setting6.doge.wow' was updated. From '' to 'so much'
+Property 'common.setting6.ops' was added with value: vops
+Property 'group1.baz' was updated. From 'bas' to 'bars'
+Property 'group1.nest' was updated. From [complex value] to 'str'
+Property 'group2' was removed
+Property 'group3' was added with value: [complex value]`;
+
+  expect(makeDiffPlain(filepath1, filepath2)).toBe(expected);
+});
