@@ -2,7 +2,7 @@ import buildTree from './treeBuilder.js';
 import parseData from './parsers.js';
 import formatTree from './formatters/stylish.js';
 import formatPlain from './formatters/plain.js';
-import formatJson from './formatters/json.js'
+import formatJson from './formatters/json.js';
 
 const makeParsingData = (filepath1, filepath2, format) => {
   const data1 = parseData(filepath1);
