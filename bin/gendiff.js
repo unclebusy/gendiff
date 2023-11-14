@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { program } from 'commander';
-import makeParsingData from '../src/makeParsingData.js';
+import makeParsingData from '../index.js';
 
 program
   .name('gendiff')
