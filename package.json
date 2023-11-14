@@ -1,7 +1,7 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
-  "description": "[![Actions Status](https://github.com/unclebusy/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/unclebusy/frontend-project-46/actions)",
+  "description": "Program to find differences between two files",
   "main": "bin/gendiff.js",
   "scripts": {
     "test": "jest",
@@ -12,7 +12,7 @@
   "bin": {
     "gendiff": "bin/gendiff.js"
   },
-  "author": "",
+  "author": "Unclebusy",
   "license": "ISC",
   "dependencies": {
     "commander": "^11.0.0",
