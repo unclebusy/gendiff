@@ -1,3 +1,3 @@
-import makeParsingData from '../frontend-project-46/src/makeParsingData.js';
+import makeParsingData from './src/makeParsingData.js';
 
 export default makeParsingData;
