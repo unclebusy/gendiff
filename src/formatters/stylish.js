@@ -37,7 +37,7 @@ const formatNode = (node, depth = 1) => {
       return `${indent}  ${node.key}: {\n${children}\n${indent}  }`;
     }
     default:
-      return '';
+      throw new Error(`Unknown type: '${node.type}'!`);
   }
 };
 
