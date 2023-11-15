@@ -4,7 +4,7 @@ import formatTree from './formatters/stylish.js';
 import formatPlain from './formatters/plain.js';
 import formatJson from './formatters/json.js';
 
-const makeParsingData = (filepath1, filepath2, format) => {
+const makeGenDiff = (filepath1, filepath2, format) => {
   const data1 = parseData(filepath1);
   const data2 = parseData(filepath2);
 
@@ -19,4 +19,4 @@ const makeParsingData = (filepath1, filepath2, format) => {
   return formatTree(diffTree);
 };
 
-export default makeParsingData;
+export default makeGenDiff;

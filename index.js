@@ -1,3 +1,3 @@
-import makeParsingData from './src/makeParsingData.js';
+import makeGenDiff from './src/makeGenDiff.js';
 
-export default makeParsingData;
+export default makeGenDiff;

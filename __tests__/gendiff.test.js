@@ -1,14 +1,14 @@
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
-import makeParsingData from '../src/makeParsingData.js';
+import makeGenDiff from '../src/makeGenDiff.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8').trim();
 
-describe('makeParsingData', () => {
+describe('makeGenDiff', () => {
   const stylishResult = readFile('stylish_result_test.txt');
   const plainResult = readFile('plain_result_test.txt');
   const jsonResult = readFile('json_result_test.json');
@@ -23,7 +23,7 @@ describe('makeParsingData', () => {
   ])('compare %s and %s in %s format', (file1, file2, format, expected) => {
     const filepath1 = getFixturePath(file1);
     const filepath2 = getFixturePath(file2);
-    let result = makeParsingData(filepath1, filepath2, format);
+    let result = makeGenDiff(filepath1, filepath2, format);
 
     if (result.endsWith('\n')) {
       result = result.slice(0, -1);
