@@ -25,6 +25,6 @@ describe('makeGenDiff', () => {
     const filepath2 = getFixturePath(file2);
     const result = makeGenDiff(filepath1, filepath2, format).trim();
     const expectedTrimmed = expected.trim();
-    expect(result).toEqual(expectedTrimmed);
+    expect(result).toBe(expectedTrimmed);
   });
 });
