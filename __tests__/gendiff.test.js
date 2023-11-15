@@ -23,11 +23,8 @@ describe('makeGenDiff', () => {
   ])('compare %s and %s in %s format', (file1, file2, format, expected) => {
     const filepath1 = getFixturePath(file1);
     const filepath2 = getFixturePath(file2);
-    let result = makeGenDiff(filepath1, filepath2, format);
-
-    if (result.endsWith('\n')) {
-      result = result.slice(0, -1);
-    }
-    expect(result).toEqual(expected);
+    const result = makeGenDiff(filepath1, filepath2, format).trim();
+    const expectedTrimmed = expected.trim();
+    expect(result).toEqual(expectedTrimmed);
   });
 });

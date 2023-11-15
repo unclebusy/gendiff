@@ -11,23 +11,24 @@ const formatPlain = (tree, parentKey = '') => {
     return value;
   };
 
-  const renderNode = (node) => {
+  const renderNode = (node, currentPath = '') => {
     const key = parentKey ? `${parentKey}.${node.key}` : node.key;
+    const fullPath = currentPath ? `${currentPath}.${node.key}` : node.key;
 
     switch (node.type) {
       case 'added':
-        return `Property '${key}' was added with value: ${stringifyValue(node.value)}\n`;
+        return `Property '${fullPath}' was added with value: ${stringifyValue(node.value)}\n`;
       case 'deleted':
-        return `Property '${key}' was removed\n`;
+        return `Property '${fullPath}' was removed\n`;
       case 'modified':
-        return `Property '${key}' was updated. From ${stringifyValue(node.oldValue)} to ${stringifyValue(node.newValue)}\n`;
+        return `Property '${fullPath}' was updated. From ${stringifyValue(node.oldValue)} to ${stringifyValue(node.newValue)}\n`;
       case 'nested':
-        return node.children.map((child) => renderNode(child)).join('');
+        return node.children.map((child) => renderNode(child, fullPath)).join('');
       case 'unchanged':
         return '';
       default:
         throw new Error(`Unknown node type: ${node.type}`);
-    }
+    };
   };
 
   return tree.map((node) => renderNode(node)).join('');
