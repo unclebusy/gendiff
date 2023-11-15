@@ -12,7 +12,6 @@ const formatPlain = (tree, parentKey = '') => {
   };
 
   const renderNode = (node, currentPath = '') => {
-    const key = parentKey ? `${parentKey}.${node.key}` : node.key;
     const fullPath = currentPath ? `${currentPath}.${node.key}` : node.key;
 
     switch (node.type) {
@@ -28,7 +27,7 @@ const formatPlain = (tree, parentKey = '') => {
         return '';
       default:
         throw new Error(`Unknown node type: ${node.type}`);
-    };
+    }
   };
 
   return tree.map((node) => renderNode(node)).join('');
