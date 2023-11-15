@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-const formatPlain = (tree, parentKey = '') => {
+const formatPlain = (tree, currentPath = '') => {
   const stringifyValue = (value) => {
     if (_.isObject(value)) {
       return '[complex value]';
@@ -11,7 +11,7 @@ const formatPlain = (tree, parentKey = '') => {
     return value;
   };
 
-  const renderNode = (node, currentPath = '') => {
+  const renderNode = (node) => {
     const fullPath = currentPath ? `${currentPath}.${node.key}` : node.key;
 
     switch (node.type) {
