@@ -1,6 +1,6 @@
 import buildTree from './treeBuilder.js';
 import parseData from './parsers.js';
-import getFormatter from './formatters/index.js';
+import getFormatter from '../src/formatters/index.js';
 
 const makeGenDiff = (filepath1, filepath2, format) => {
   const data1 = parseData(filepath1);
