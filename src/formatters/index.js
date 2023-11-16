@@ -11,9 +11,9 @@ const formatters = {
 const getFormatter = (format, data) => {
   if (!formatters[format]) {
     throw new Error(`Unsupported format: ${format}`);
-  };
+  }
 
-  return  formatters[format](data);
+  return formatters[format](data);
 };
 
 export default getFormatter;
