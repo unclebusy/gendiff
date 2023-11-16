@@ -7,9 +7,8 @@ const makeGenDiff = (filepath1, filepath2, format) => {
   const data2 = parseData(filepath2);
 
   const diffTree = buildTree(data1, data2);
-  const formatter = getFormatter(format);
 
-  return formatter(diffTree);
+  return getFormatter(format, diffTree);
 };
 
 export default makeGenDiff;
