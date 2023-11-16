@@ -30,7 +30,7 @@ const formatPlain = (tree) => {
     }
   };
 
-  return tree.map((node) => renderNode(node)).join('');
+  return tree.map((node) => renderNode(node)).join('').trim();
 };
 
 export default formatPlain;
