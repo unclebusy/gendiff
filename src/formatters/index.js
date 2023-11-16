@@ -8,7 +8,4 @@ const formatters = {
   stylish: formatTree,
 };
 
-export default (format, data) => {
-
-  return formatters[format](data);
-};
+export default (format, data) => formatters[format](data);
