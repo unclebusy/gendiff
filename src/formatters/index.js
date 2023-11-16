@@ -8,4 +8,12 @@ const formatters = {
   stylish: formatTree,
 };
 
-export default (format, data) => formatters[format](data);
+const getFormatter = (format, data) => {
+  if (!formatters[format]) {
+    throw new Error(`Unsupported format: ${format}`);
+  };
+
+  return  formatters[format](data);
+};
+
+export default getFormatter;
