@@ -1,15 +1,19 @@
 import yaml from 'js-yaml';
 
+const parsers = {
+  json: JSON.parse,
+  yml: yaml.load,
+  yaml: yaml.load,
+};
+
 const parseData = (data, fileType) => {
-  if (fileType === 'json') {
-    return JSON.parse(data);
+  const parser = parsers[fileType];
+
+  if (!parser) {
+    throw new Error(`Unsupported file format: ${fileType}`);
   }
 
-  if (fileType === 'yml' || fileType === 'yaml') {
-    return yaml.load(data);
-  }
-
-  throw new Error(`Unsupported file format: ${fileType}`);
+  return parser(data);
 };
 
 export default parseData;
