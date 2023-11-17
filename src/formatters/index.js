@@ -2,9 +2,9 @@ import formatPlain from './plain.js';
 import formatTree from './stylish.js';
 
 const formatters = {
-  plain: formatPlain,
+  plain: (data) => formatPlain(data),
   json: (data) => JSON.stringify(data, null, 2),
-  stylish: formatTree,
+  stylish: (data) => formatTree(data),
 };
 
 const getFormatter = (format, data) => {
